@@ -1,0 +1,48 @@
+﻿<Window x:Class="GameOfLife.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GameOfLife"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="768" Width="1024"
+        SizeChanged="Window_SizeChanged">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="26" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid HorizontalAlignment="Left" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            
+            <Button Name="RenderButton" Click="RenderButton_Render" Background="Green" Grid.Column="0" Margin="0,0,8,0" Padding="4,4,4,4">Render</Button>
+            <Button Name="StartButton" Click="StartButton_Start" Background="Gray" Grid.Column="1" Margin="0,0,8,0" Padding="4,4,4,4">Start</Button>
+            <Button Name="StopButton" Click="StopButton_Stop" Background="Gray" Grid.Column="2" Margin="0,0,8,0" Padding="4,4,4,4">Stop</Button>
+            <Button Name="ResetButton" Click="ResetButton_Reset" Background="Red" Grid.Column="3" Margin="0,0,8,0" Padding="4,4,4,4">Reset</Button>
+
+            <Grid Grid.Column="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                
+                <TextBlock Margin="0,0,8,0" Padding="2,2,2,2">Density</TextBlock>
+                <TextBox Name="LiveDensity" Grid.Column="4" Width="68" BorderThickness="1" Text="0.3" PreviewTextInput="LiveDensity_PreviewTextInput" />
+            </Grid>
+        </Grid>
+        
+        <Canvas Name="myCanvas" Grid.Row="1" Loaded="myCanvas_Loaded">
+            <Image Name="myImage" />
+        </Canvas>
+    </Grid>
+</Window>
