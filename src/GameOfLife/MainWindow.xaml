@@ -9,11 +9,11 @@
         SizeChanged="Window_SizeChanged">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="26" />
-            <RowDefinition />
+            <RowDefinition Height="48" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <Grid HorizontalAlignment="Left" Grid.Row="0">
+        <Grid HorizontalAlignment="Left" Grid.Row="0" Margin="12,12,12,12">
             <Grid.RowDefinitions>
                 <RowDefinition />
             </Grid.RowDefinitions>
@@ -34,14 +34,19 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 
-                <TextBlock Margin="0,0,8,0" Padding="2,2,2,2">Density</TextBlock>
-                <TextBox Name="LiveDensity" Grid.Column="4" Width="68" BorderThickness="1" Text="0.3" PreviewTextInput="LiveDensity_PreviewTextInput" />
+                <TextBlock Margin="0,0,8,0" Padding="2,2,2,2" Grid.Column="0">Density</TextBlock>
+                <TextBox Name="LiveDensity" Grid.Column="1" Width="68" BorderThickness="1" Text="0.3" PreviewTextInput="LiveDensity_PreviewTextInput" />
+
+                <TextBlock Margin="8,0,8,0" Padding="2,2,2,2" Grid.Column="2">FPS</TextBlock>
+                <TextBox Name="FPS" Grid.Column="3" Width="68" BorderThickness="1" Text="30" PreviewTextInput="LiveDensity_PreviewTextInput" />
             </Grid>
         </Grid>
         
-        <Canvas Name="myCanvas" Grid.Row="1" Loaded="myCanvas_Loaded">
+        <Canvas Name="myCanvas" Grid.Row="1" Loaded="myCanvas_Loaded" Margin="12,0,12,12">
             <Image Name="myImage" />
         </Canvas>
     </Grid>

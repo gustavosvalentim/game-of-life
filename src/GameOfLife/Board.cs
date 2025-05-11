@@ -3,21 +3,21 @@
     public class Board
     {
         private Random _random = new Random();
-        public const int BoardWidth = 48;
-        public const int BoardHeight = 48;
+        public const int Columns = 48;
+        public const int Rows = 48;
 
         public Cell[,] Cells { get; set; }
 
         public Board()
         {
-            Cells = new Cell[BoardWidth, BoardHeight];
+            Cells = new Cell[Columns, Rows];
         }
 
         public void Initialize()
         {
-            for (var i = 0; i < BoardWidth; i++)
+            for (var i = 0; i < Columns; i++)
             {
-                for (var j = 0; j < BoardHeight; j++)
+                for (var j = 0; j < Rows; j++)
                 {
                     Cells[i, j] = new Cell();
                 }
@@ -28,14 +28,14 @@
 
         private void ConnectNeighbors()
         {
-            for (var i = 0; i < BoardWidth; i++)
+            for (var i = 0; i < Columns; i++)
             {
-                for (var j = 0; j < BoardHeight; j++)
+                for (var j = 0; j < Rows; j++)
                 {
                     var isLeftBorder = i == 0;
-                    var isRightBorder = i == BoardWidth - 1;
+                    var isRightBorder = i == Columns - 1;
                     var isUpperBorder = j == 0;
-                    var isBottomBorder = j == BoardHeight - 1;
+                    var isBottomBorder = j == Rows - 1;
                     var isEdge = isLeftBorder | isRightBorder | isUpperBorder | isBottomBorder;
 
                     if (isEdge)
@@ -43,9 +43,9 @@
                         continue;
                     }
 
-                    int neighborLeft = isLeftBorder ? BoardWidth - 1 : i - 1;
+                    int neighborLeft = isLeftBorder ? Columns - 1 : i - 1;
                     int neighborRight = isRightBorder ? 0 : i + 1;
-                    int neighborTop = isUpperBorder ? BoardHeight - 1 : j - 1;
+                    int neighborTop = isUpperBorder ? Rows - 1 : j - 1;
                     int neighborBottom = isBottomBorder ? 0 : j + 1;
 
                     Cells[i, j].Neighbors.Add(Cells[neighborLeft, neighborTop]);

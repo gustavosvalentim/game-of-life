@@ -54,9 +54,11 @@ namespace GameOfLife
             {
                 _dispatcherTimer = new DispatcherTimer();
                 _dispatcherTimer.Tick += new EventHandler(Timer_Tick);
-                _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1000 / 30);
             }
 
+            var fps = int.Parse(FPS.Text);
+
+            _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1000 / fps);
             _dispatcherTimer.Start();
         }
 
@@ -81,6 +83,9 @@ namespace GameOfLife
             e.Handled = Regex.IsMatch(e.Text, "[^0-9]+");
         }
 
+        /// <summary>
+        /// Reads the current board state and render it on the canvas.
+        /// </summary>
         private void Render()
         {
             using (var bmp = new Bitmap((int)myCanvas.ActualWidth, (int)myCanvas.ActualHeight))
@@ -93,22 +98,16 @@ namespace GameOfLife
 
                 var cellSize = new System.Drawing.Size(CellSize, CellSize);
 
-                for (int i = 0; i < Board.BoardWidth; i++)
+                for (int i = 0; i < Board.Columns; i++)
                 {
-                    for (int j = 0; j < Board.BoardHeight; j++)
+                    for (int j = 0; j < Board.Rows; j++)
                     {
                         var cellLocation = new System.Drawing.Point(i * CellSize, j * CellSize);
                         var cellRect = new System.Drawing.Rectangle(cellLocation, cellSize);
                         var cell = _board.Cells[i, j];
+                        var brush = cell.IsAlive ? aliveBrush : deadBrush;
 
-                        if (cell.IsAlive)
-                        {
-                            gfx.FillRectangle(aliveBrush, cellRect);
-                        }
-                        else
-                        {
-                            gfx.FillRectangle(deadBrush, cellRect);
-                        }
+                        gfx.FillRectangle(brush, cellRect);
                     }
                 }
 
