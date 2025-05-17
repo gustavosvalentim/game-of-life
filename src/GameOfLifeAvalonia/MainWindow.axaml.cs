@@ -9,7 +9,7 @@ namespace GameOfLifeAvalonia
 {
     public partial class MainWindow : Window
     {
-        private DispatcherTimer _dispatcherTimer;
+        private readonly DispatcherTimer _dispatcherTimer;
 
         public MainWindow()
         {

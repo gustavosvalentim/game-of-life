@@ -1,14 +1,15 @@
 ﻿using System;
 
-namespace GameOfLife
+namespace GameOfLifeAvalonia
 {
     public class Board
     {
-        private Random _random = new Random();
+        private readonly Random _random = new Random();
+
         public const int Columns = 48;
         public const int Rows = 48;
 
-        public Cell[,] Cells { get; set; }
+        public Cell[,] Cells { get; }
 
         public Board()
         {
