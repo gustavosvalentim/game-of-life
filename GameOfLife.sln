@@ -6,8 +6,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOfLife", "src\GameOfLif
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{179B8116-2F43-4269-BEE3-BB25D9BF1A08}"
 	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-desktop.yml = .github\workflows\dotnet-desktop.yml
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeAvalonia", "src\GameOfLifeAvalonia\GameOfLifeAvalonia.csproj", "{0B0ED8B4-41C2-4894-B14E-E9766C11CACE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +22,10 @@ Global
 		{761BF3B4-BE2C-4204-995E-1051E9DF48B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{761BF3B4-BE2C-4204-995E-1051E9DF48B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{761BF3B4-BE2C-4204-995E-1051E9DF48B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B0ED8B4-41C2-4894-B14E-E9766C11CACE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B0ED8B4-41C2-4894-B14E-E9766C11CACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B0ED8B4-41C2-4894-B14E-E9766C11CACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B0ED8B4-41C2-4894-B14E-E9766C11CACE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

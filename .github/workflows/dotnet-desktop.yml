@@ -6,8 +6,8 @@ on:
       - 'v*'  # Triggers when you push a tag like v1.0.0
 
 jobs:
-  build:
-    runs-on: windows-latest
+  windows-build:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -18,9 +18,19 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Publish WPF App
+      - name: Publish Windows App
         run: |
-          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
+        working-directory: .  # adjust if necessary
+
+      - name: Publish Linux App
+        run: |
+          dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
+        working-directory: .  # adjust if necessary
+
+      - name: Publish MacOS App
+        run: |
+          dotnet publish -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
         working-directory: .  # adjust if necessary
 
       - name: Create GitHub Release
