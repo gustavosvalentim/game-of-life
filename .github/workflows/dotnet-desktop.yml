@@ -6,7 +6,7 @@ on:
       - 'v*'  # Triggers when you push a tag like v1.0.0
 
 jobs:
-  windows-build:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,22 +20,31 @@ jobs:
 
       - name: Publish Windows App
         run: |
-          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/win64 ./src/GameOfLifeAvalonia
         working-directory: .  # adjust if necessary
 
       - name: Publish Linux App
         run: |
-          dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
+          dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/linux64 ./src/GameOfLifeAvalonia
         working-directory: .  # adjust if necessary
 
       - name: Publish MacOS App
         run: |
-          dotnet publish -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish ./src/GameOfLifeAvalonia
+          dotnet publish -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/osxarm64 ./src/GameOfLifeAvalonia
         working-directory: .  # adjust if necessary
+        
+      - name: Rename files
+        run: |
+          mv publish/win64/GameOfLifeAvalonia.exe publish/win64/GameOfLife-win64.exe
+          mv publish/linux64/GameOfLifeAvalonia publish/linux64/GameOfLife-linux64
+          mv publish/osxarm64/GameOfLifeAvalonia publish/osxarm64/GameOfLife-osx-arm64
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          files: ./publish/GameOfLife.exe
+          files: |
+            publish/win64/GameOfLife-win64.exe
+            publish/linux64/GameOfLife-linux64
+            publish/osx64/GameOfLife-osx-arm64
         env:
           GITHUB_TOKEN: ${{ secrets.GSV_PAT }}
