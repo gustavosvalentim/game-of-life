@@ -21,17 +21,17 @@ jobs:
       - name: Publish Windows App
         run: |
           dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/win64 ./src/GameOfLifeAvalonia
-        working-directory: .  # adjust if necessary
+        working-directory: .
 
       - name: Publish Linux App
         run: |
           dotnet publish -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/linux64 ./src/GameOfLifeAvalonia
-        working-directory: .  # adjust if necessary
+        working-directory: .
 
       - name: Publish MacOS App
         run: |
           dotnet publish -c Release -r osx-arm64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish/osxarm64 ./src/GameOfLifeAvalonia
-        working-directory: .  # adjust if necessary
+        working-directory: .
         
       - name: Rename files
         run: |

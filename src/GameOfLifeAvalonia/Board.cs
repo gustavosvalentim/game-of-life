@@ -39,12 +39,6 @@ namespace GameOfLifeAvalonia
                     var isRightBorder = i == Columns - 1;
                     var isUpperBorder = j == 0;
                     var isBottomBorder = j == Rows - 1;
-                    var isEdge = isLeftBorder | isRightBorder | isUpperBorder | isBottomBorder;
-
-                    if (isEdge)
-                    {
-                        continue;
-                    }
 
                     int neighborLeft = isLeftBorder ? Columns - 1 : i - 1;
                     int neighborRight = isRightBorder ? 0 : i + 1;
