@@ -45,6 +45,6 @@ jobs:
           files: |
             publish/win64/GameOfLife-win64.exe
             publish/linux64/GameOfLife-linux64
-            publish/osx64/GameOfLife-osx-arm64
+            publish/osxarm64/GameOfLife-osx-arm64
         env:
           GITHUB_TOKEN: ${{ secrets.GSV_PAT }}
